@@ -2,8 +2,12 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { setup } from  './setup'
+
 export const environment = {
-  production: false
+  production: false,
+  api_base: `http://localhost:8008/`,
+  url_base: `http://localhost:4200/`,
 };
 
 /*
