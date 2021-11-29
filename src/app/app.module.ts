@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { RoutingModule } from './routing.module';
 //import { ProjectsComponent } from './projects/projects.component';
 import { ProjectsListComponent } from './projects/projects-list/projects-list.component';
+import { VariantViewComponent } from './variant/variant-view/variant-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProjectsListComponent
+    ProjectsListComponent,
+    VariantViewComponent
   ],
   imports: [
     BrowserModule,

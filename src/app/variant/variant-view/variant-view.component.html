@@ -1,0 +1,22 @@
+
+<div ng-if="variant?.chrom">
+    <h2>Variant {{variant?.chrom}}:{{variant?.pos}} {{variant?.ref}} > {{variant?.alt}}</h2>
+    <table >
+        <th> Project</th>
+        <th> allele_number </th>
+        <th> allele_count</th>
+        <th> allele_count_hom</th>
+        <th> frequency</th>
+    <tr *ngFor="let freq of variant?.frequencies">
+            <td> {{freq.project_name}}</td>
+            <td> {{freq.allele_number}}</td>
+            <td> {{freq.allele_count}}</td>
+            <td> {{freq.allele_count_hom}}</td>
+            <td> {{freq.frequency|number: '1.4-4'}}</td>
+
+        </tr>
+        
+    </table>
+
+</div>
+
