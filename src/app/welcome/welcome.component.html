@@ -1,0 +1,37 @@
+<p>Project Allele Frequency (PAF!)</p>
+
+
+
+    <label>Search database: </label><br>
+  
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Search</mat-label>
+        <input matInput #source [(ngModel)]="search_string">
+      </mat-form-field>
+    </p>
+    <p>
+      <button mat-raised-button (click)="this.search();">
+        <mat-icon>search</mat-icon>
+        Search
+      </button>
+    </p>
+  
+  
+  
+
+<!--
+<form class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Search</mat-label>
+      <input matInput #message placeholder="chr:pos(-end) or chr-pos-ref-alt " [(ngModel)]="search_string">
+    </mat-form-field>
+
+    <button mat-raised-button (click)="this.update();">
+        <mat-icon>edit</mat-icon>
+        Update
+      </button>
+  
+
+  </form>
+-->  
