@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 
-import { ProjectsListComponent }      from './projects/projects-list/projects-list.component';
+import { ProjectListComponent }      from './project/project-list/project-list.component';
 import { VariantViewComponent } from './variant/variant-view/variant-view.component';
 import { VariantListComponent } from './variant/variant-list/variant-list.component';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'welcome', component: WelcomeComponent },
 
 
-  { path: 'projects', component: ProjectsListComponent },
+  { path: 'projects', component: ProjectListComponent },
   { path: 'variant/:chrom/:pos/:ref/:alt', component: VariantViewComponent },
   { path: 'variant/:id', component: VariantViewComponent },
   { path: 'variants/:chrom/:start/:end', component: VariantListComponent },

@@ -17,9 +17,10 @@ import { RoutingModule } from './routing.module';
 
 
 //import { ProjectsComponent } from './projects/projects.component';
-import { ProjectsListComponent } from './projects/projects-list/projects-list.component';
-import { VariantViewComponent } from './variant/variant-view/variant-view.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { ProjectViewComponent } from './project/project-view/project-view.component';
+import { ProjectListComponent } from './project/project-list/project-list.component';
+import { VariantViewComponent } from './variant/variant-view/variant-view.component';
 import { VariantListComponent } from './variant/variant-list/variant-list.component';
 
 @NgModule({
@@ -28,10 +29,11 @@ import { VariantListComponent } from './variant/variant-list/variant-list.compon
     // std kbr components
     ConfirmationComponent,
     SingleInputComponent,
-    ProjectsListComponent,
+    ProjectListComponent,
     VariantViewComponent,
     WelcomeComponent,
-    VariantListComponent
+    VariantListComponent,
+    ProjectViewComponent
   ],
   imports: [
     BrowserModule,

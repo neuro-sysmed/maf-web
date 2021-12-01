@@ -1,4 +1,4 @@
-<p>variant-list works!</p>
+<h1> Variants in {{chrom}}:{{start}}-{{end}}</h1>
 
 <table  mat-table [dataSource]="variants ?? []" class="mat-elevation-z3 table-800px">
 
@@ -31,7 +31,7 @@
 
     <ng-container matColumnDef="frequency">
         <th mat-header-cell *matHeaderCellDef> Frequency</th>
-        <td mat-cell *matCellDef="let freq"> {{freq.frequency}} </td>
+        <td mat-cell *matCellDef="let freq"> {{freq.frequency|number: "1.4-4"}} </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

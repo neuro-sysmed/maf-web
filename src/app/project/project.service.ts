@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { Project } from './projects.model';
+import { Project } from './project.model';
 
 
 const httpOptions = {

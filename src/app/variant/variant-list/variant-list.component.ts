@@ -16,6 +16,9 @@ export class VariantListComponent implements OnInit {
 
   variants: Variant[] = [];
   dataloaded: boolean = false;
+  chrom: string = "";
+  start: number | undefined;
+  end: number | undefined;
 
   displayedColumns: string[] = ['variant',  'allele_count', 'allele_count_hom', 'frequency'];
 
@@ -30,17 +33,14 @@ export class VariantListComponent implements OnInit {
   }
 
   getVariants(): void {
-    const chrom = this.route.snapshot.paramMap.get('chrom');
-    const start = parseInt(this.route.snapshot.paramMap.get('start')!,0);
-    const end   = parseInt(this.route.snapshot.paramMap.get('end')!,0);
-
-    if (chrom == null || start == 0 || end == null ) {
-      return
-    }
+    this.chrom = this.route.snapshot.paramMap.get('chrom') || "";
+    this.start = parseInt(this.route.snapshot.paramMap.get('start')!,0);
+    this.end   = parseInt(this.route.snapshot.paramMap.get('end')!,0);
 
 
 
-    this.variantService.getVariants( chrom, start, end )
+
+    this.variantService.getVariants( this.chrom, this.start, this.end )
         .subscribe(variants => {this.variants = variants; this.dataloaded=true;});
 
   }
