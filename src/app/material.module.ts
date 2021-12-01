@@ -26,6 +26,7 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
     imports: [
@@ -54,6 +55,7 @@ import {MatTableModule} from '@angular/material/table';
         MatSnackBarModule,
         MatSortModule,
         MatTableModule,
+        MatToolbarModule,
     ],
     exports: [
         MatBadgeModule,
@@ -81,6 +83,7 @@ import {MatTableModule} from '@angular/material/table';
         MatSnackBarModule,
         MatSortModule,
         MatTableModule,
+        MatToolbarModule,        
     ]
 })
 

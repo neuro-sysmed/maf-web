@@ -9,7 +9,6 @@ export interface Frequency {
     frequency: number;
   }
 
-
 export interface Variant {
     id: string;
 

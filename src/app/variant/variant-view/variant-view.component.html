@@ -1,22 +1,43 @@
 
-<div ng-if="variant?.chrom">
-    <h2>Variant {{variant?.chrom}}:{{variant?.pos}} {{variant?.ref}} > {{variant?.alt}}</h2>
-    <table >
-        <th> Project</th>
-        <th> allele_number </th>
-        <th> allele_count</th>
-        <th> allele_count_hom</th>
-        <th> frequency</th>
-    <tr *ngFor="let freq of variant?.frequencies">
-            <td> {{freq.project_name}}</td>
-            <td> {{freq.allele_number}}</td>
-            <td> {{freq.allele_count}}</td>
-            <td> {{freq.allele_count_hom}}</td>
-            <td> {{freq.frequency|number: '1.4-4'}}</td>
-
-        </tr>
+    <div ng-if="variant?.chrom">
+        <div style="text-align:center">
+            <h2>Variant {{variant?.chrom}}:{{variant?.pos}} {{variant?.ref}} > {{variant?.alt}}</h2>
+        </div>
+    
         
-    </table>
+        <table  mat-table [dataSource]="variant?.frequencies ?? []" class="mat-elevation-z3 table-800px"> 
+    
+            <ng-container matColumnDef="project">
+                <th mat-header-cell *matHeaderCellDef> Project</th>
+                <td mat-cell *matCellDef="let freq"> {{freq.project_name}} </td>
+            </ng-container>
+          
+    
+            <ng-container matColumnDef="allele_number">
+                <th mat-header-cell *matHeaderCellDef> Alleles</th>
+                <td mat-cell *matCellDef="let freq"> {{freq.allele_number}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="allele_count">
+                <th mat-header-cell *matHeaderCellDef> Alleles Count</th>
+                <td mat-cell *matCellDef="let freq"> {{freq.allele_count}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="allele_count_hom">
+                <th mat-header-cell *matHeaderCellDef> Alleles Count (hom)</th>
+                <td mat-cell *matCellDef="let freq"> {{freq.allele_count_hom}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="frequency">
+                <th mat-header-cell *matHeaderCellDef> Frequency</th>
+                <td mat-cell *matCellDef="let freq"> {{freq.frequency}} </td>
+            </ng-container>
+    
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        
+    
+        </table>
 
-</div>
-
+    </div>
+    

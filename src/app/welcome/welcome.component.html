@@ -1,11 +1,11 @@
-<p>Project Allele Frequency (PAF!)</p>
 
 
+<div style="text-align:center">
 
-    <label>Search database: </label><br>
+    <H1>Search database: </H1><br>
   
     <p>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill" [style.width.px]="800">
         <mat-label>Search</mat-label>
         <input matInput #source [(ngModel)]="search_string">
       </mat-form-field>
@@ -17,8 +17,11 @@
       </button>
     </p>
   
+    Single variant <a href="/variant/chrM/2706/A/G">chrM-2706-A-G</a><br>
+    Region  <a href="/variants/chrM/2700/7200">chrM:2700-7200</a><br>
   
-  
+</div>
+
 
 <!--
 <form class="example-form">

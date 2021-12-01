@@ -21,6 +21,7 @@ export class VariantService {
 
   //private cloudUrl  = 'clouds/';  // URL to web api
   private variantUrl  = 'http://localhost:8008/variant'
+  private regionUrl   = 'http://localhost:8008/region'
 
   /**
    * Handle Http operation that failed.
@@ -61,6 +62,20 @@ export class VariantService {
     );
   }  
   
+
+  getVariants(chrom:string, start:number, end:number): Observable<Variant[]> {
+
+    if ( isNaN(end) ) {
+      end = start;
+    }
+
+    const url = `${this.regionUrl}/${chrom}/${start}/${end}/`;
+
+    return this.http.get<Variant[]>(url).pipe(
+      tap(_ => this.log(`fetched variant id=${chrom}-${start}-${end}`)),
+      catchError(this.handleError<Variant[]>(`getVariant id=${chrom}-${start}-${end}`))
+    );
+  }
 
   constructor(private http: HttpClient, ) { }
   

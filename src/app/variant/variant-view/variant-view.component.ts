@@ -15,6 +15,7 @@ export class VariantViewComponent implements OnInit {
   variant: Variant | undefined;
 //  variant: Variant = {id:"", "chrom":"", "pos":0, "ref":"", "alt":"", "frequencies":[]}
   dataloaded: boolean = false;
+  displayedColumns: string[] = ['project', 'allele_number', 'allele_count', 'allele_count_hom', 'frequency'];
 
   constructor(private variantService: VariantService,
               private route: ActivatedRoute,
@@ -27,6 +28,8 @@ export class VariantViewComponent implements OnInit {
   getVariant(): void {
     const chrom = this.route.snapshot.paramMap.get('chrom');
     const pos   = parseInt(this.route.snapshot.paramMap.get('pos')!,0);
+    const start = parseInt(this.route.snapshot.paramMap.get('start')!,0);
+    const end   = parseInt(this.route.snapshot.paramMap.get('end')!,0);
     const ref   = this.route.snapshot.paramMap.get('ref');
     const alt   = this.route.snapshot.paramMap.get('alt');
 
@@ -35,9 +38,10 @@ export class VariantViewComponent implements OnInit {
     }
 
 
+
     this.variantService.getVariant( chrom, pos, ref, alt )
         .subscribe(variant => {this.variant = variant; this.dataloaded=true;});
-    console.log(this.variant)
+
   }
 
 

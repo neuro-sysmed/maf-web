@@ -19,6 +19,8 @@ import { RoutingModule } from './routing.module';
 //import { ProjectsComponent } from './projects/projects.component';
 import { ProjectsListComponent } from './projects/projects-list/projects-list.component';
 import { VariantViewComponent } from './variant/variant-view/variant-view.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { VariantListComponent } from './variant/variant-list/variant-list.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { VariantViewComponent } from './variant/variant-view/variant-view.compon
     ConfirmationComponent,
     SingleInputComponent,
     ProjectsListComponent,
-    VariantViewComponent
+    VariantViewComponent,
+    WelcomeComponent,
+    VariantListComponent
   ],
   imports: [
     BrowserModule,
