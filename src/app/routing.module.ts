@@ -18,8 +18,10 @@ const routes: Routes = [
   { path: 'projects', component: ProjectListComponent },
   { path: 'variant/:chrom/:pos/:ref/:alt', component: VariantViewComponent },
   { path: 'variant/:id', component: VariantViewComponent },
+  { path: 'variants/gene/:name', component: VariantListComponent },
   { path: 'variants/:chrom/:start/:end', component: VariantListComponent },
   { path: 'variants/:chrom/:start', component: VariantListComponent },
+
 
 ];
 

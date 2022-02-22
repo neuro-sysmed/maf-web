@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { Variant } from './variant.model';
+import { Variant, Annotation } from './variant.model';
 
 
 const httpOptions = {
@@ -20,8 +20,10 @@ export class VariantService {
 
 
   //private cloudUrl  = 'clouds/';  // URL to web api
-  private variantUrl  = 'http://localhost:8008/variant'
-  private regionUrl   = 'http://localhost:8008/region'
+  private variantUrl      = 'http://localhost:8008/variant'
+  private regionUrl       = 'http://localhost:8008/region'
+  private variantGeneUrl  = 'http://localhost:8008/variant/gene'
+  private variantAnnotationUrl  = 'http://localhost:8008/variant/annotation'
 
   /**
    * Handle Http operation that failed.
@@ -76,6 +78,28 @@ export class VariantService {
       catchError(this.handleError<Variant[]>(`getVariant id=${chrom}-${start}-${end}`))
     );
   }
+
+
+  getVariantsByGene(name:string): Observable<Variant[]> {
+
+    const url = `${this.variantGeneUrl}/${name}/`;
+
+    return this.http.get<Variant[]>(url).pipe(
+      tap(_ => this.log(`fetched variants gene=${name}`)),
+      catchError(this.handleError<Variant[]>(`getVariantsGene name=${name}`))
+    );
+  }
+
+
+  getVariantAnnotation(id:string): Observable<Annotation[]> {
+    const url = `${this.variantAnnotationUrl}/${id}/`;
+
+    return this.http.get<Annotation[]>(url).pipe(
+      tap(_ => this.log(`fetched annotations for variants id=${id}`)),
+      catchError(this.handleError<Annotation[]>(`getVariantsAnnotations id=${id}`))
+    );
+  }
+
 
   constructor(private http: HttpClient, ) { }
   

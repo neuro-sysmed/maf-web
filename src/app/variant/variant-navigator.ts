@@ -22,6 +22,18 @@ export class VariantNavigator {
     return true;
   }
 
+
+  geneUrl(name:string): string {
+    return `/variants/gene/${name}`;
+  }
+
+  geneView(name:string): boolean {
+    this.router.navigateByUrl(this.geneUrl(name));
+    return true;
+  }
+
+
+
   detailedUrl(chrom:string, pos:number, ref:string, alt:string): string{
     return `/variant/${chrom}/${pos}/${ref}/${alt}`
   }

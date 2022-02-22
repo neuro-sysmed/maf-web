@@ -31,6 +31,9 @@ export class WelcomeComponent implements OnInit {
       console.log( fields )
       this.variantNavigator.detailedView(fields[0], +fields[1], fields[2], fields[3])
     }
+    else if (this.search_string?.match(/^\w+$/)) {
+      this.variantNavigator.geneView(this.search_string)
+    }
     else {
       console.log( "No matches", this.search_string )
      }

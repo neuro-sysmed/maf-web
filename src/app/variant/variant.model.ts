@@ -19,3 +19,21 @@ export interface Variant {
 
     frequencies: Frequency[];
 }  
+
+export interface Annotation {
+    id: string;
+    gene_id: string;
+    variant_id: string;
+
+    gene:string;
+    transcript: string;
+
+    dbsnp: string;
+    effect: string;
+    npos: string;
+    cpos: string;
+    DNA_change: string;
+    AA_change: string;
+    polyphen: string;
+    sift: string;
+}

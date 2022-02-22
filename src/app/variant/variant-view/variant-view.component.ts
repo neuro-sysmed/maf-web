@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Variant, Frequency } from "../variant.model"
+import { Variant, Frequency, Annotation } from "../variant.model"
 import { VariantService } from '../variant.service';
 
 
@@ -16,6 +16,10 @@ export class VariantViewComponent implements OnInit {
 //  variant: Variant = {id:"", "chrom":"", "pos":0, "ref":"", "alt":"", "frequencies":[]}
   dataloaded: boolean = false;
   displayedColumns: string[] = ['project', 'allele_number', 'allele_count', 'allele_count_hom', 'frequency'];
+  annotationDisplayedColumns: string[] = ['gene', 'transcript', 'dbsnp', 'effect', 'npos', 'cpos', 'polyphen','sift']
+
+
+  annotations: Annotation[] = [];
 
   constructor(private variantService: VariantService,
               private route: ActivatedRoute,
@@ -23,7 +27,10 @@ export class VariantViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.getVariant()
+    this.getAnnotations()
   }
+
+  
 
   getVariant(): void {
     const chrom = this.route.snapshot.paramMap.get('chrom');
@@ -39,9 +46,19 @@ export class VariantViewComponent implements OnInit {
 
 
 
-    this.variantService.getVariant( chrom, pos, ref, alt )
-        .subscribe(variant => {this.variant = variant; this.dataloaded=true;});
+    this.variantService.getVariant( chrom, pos, ref, alt ).subscribe(variant => {
+                 this.variant = variant; 
+                 this.dataloaded=true;
+                 this.getAnnotations()
+                });
 
+  }
+
+  getAnnotations(): void {
+    if (this.variant) {
+        this.variantService.getVariantAnnotation(this.variant.id)
+          .subscribe(annotations => {this.annotations = annotations; this.dataloaded=true;});
+    }
   }
 
 

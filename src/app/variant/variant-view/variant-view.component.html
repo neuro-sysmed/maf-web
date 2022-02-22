@@ -41,3 +41,60 @@
 
     </div>
     
+
+    <div style="text-align:center">
+        <h2>Annotations</h2>
+    </div>
+
+
+    <table  mat-table [dataSource]="annotations ?? []" class="mat-elevation-z3 table-800px"> 
+    
+        <ng-container matColumnDef="gene">
+            <th mat-header-cell *matHeaderCellDef> gene</th>
+            <td mat-cell *matCellDef="let annot"> {{annot.gene}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="transcript">
+            <th mat-header-cell *matHeaderCellDef> transcript</th>
+            <td mat-cell *matCellDef="let annot"> {{annot.transcript}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="dbsnp">
+            <th mat-header-cell *matHeaderCellDef> dbSNP</th>
+            <td mat-cell *matCellDef="let annot"> {{annot.dbsnp}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="effect">
+            <th mat-header-cell *matHeaderCellDef> Effect</th>
+            <td mat-cell *matCellDef="let annot"> {{annot.effect}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="npos">
+            <th mat-header-cell *matHeaderCellDef> Npos</th>
+            <td mat-cell *matCellDef="let annot"> {{annot.npos}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="cpos">
+            <th mat-header-cell *matHeaderCellDef> Cpos</th>
+            <td mat-cell *matCellDef="let annot"> {{annot.cpos}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="polyphen">
+            <th mat-header-cell *matHeaderCellDef> PolyPhen</th>
+            <td mat-cell *matCellDef="let annot"> {{annot.polyphen}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="sift">
+            <th mat-header-cell *matHeaderCellDef> Sift</th>
+            <td mat-cell *matCellDef="let annot"> {{annot.sift}} </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="annotationDisplayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: annotationDisplayedColumns;"></tr>
+    
+
+    </table>
+
+

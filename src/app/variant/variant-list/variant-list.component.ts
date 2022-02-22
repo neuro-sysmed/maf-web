@@ -19,6 +19,8 @@ export class VariantListComponent implements OnInit {
   chrom: string = "";
   start: number | undefined;
   end: number | undefined;
+  name: string = "";
+  header: string = "";
 
   displayedColumns: string[] = ['variant',  'allele_count', 'allele_count_hom', 'frequency'];
 
@@ -37,12 +39,19 @@ export class VariantListComponent implements OnInit {
     this.start = parseInt(this.route.snapshot.paramMap.get('start')!,0);
     this.end   = parseInt(this.route.snapshot.paramMap.get('end')!,0);
 
+    this.name  = this.route.snapshot.paramMap.get('name') || "";
 
-
-
-    this.variantService.getVariants( this.chrom, this.start, this.end )
+    if (this.name != '') {
+      this.header = this.name;
+      this.variantService.getVariantsByGene( this.name )
+      .subscribe(variants => {this.variants = variants; this.dataloaded=true;});
+    }
+    else {
+      this.header = `${this.chrom}:${this.start}-${this.end}`
+      this.variantService.getVariants( this.chrom, this.start, this.end )
         .subscribe(variants => {this.variants = variants; this.dataloaded=true;});
 
+    }
   }
 
 
